@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>社区支行</title>
+	<meta name="viewport" content="width=device-width"/>  
+	<link rel="stylesheet" type="text/css" href="../resourses/css/bank/bank-lists.css">
+</head>
+<body>
+    <div class="outer">
+    	<div class="banksWrap inner">
+        	<div class="innerHtm">
+
+            </div>
+    	</div>
+    </div>
+	<!-- <script type="text/javascript" src="../resourses/js/vendor/jquery-2.1.4/jquery.min.js"></script> -->
+     <script type="text/javascript" src="../resourses/js/vendor/zepto/zepto.min.js"></script>
+	<script type="text/javascript" src="../resourses/js/common/commonNav.js"></script>
+	<script type="text/javascript" src="../resourses/js/vendor/base/base.js"></script>
+     <script type="text/javascript" src="../resourses/js/vendor/zepto/dropload.min.js"></script>
+	<script type="text/javascript">
+        //下拉加载更多
+         // dropload
+         // dropload.lock();
+         $('.dropload-down').hide();
+        var dropload = $('.inner').dropload({
+            domDown : {
+                domClass   : 'dropload-down',
+                domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+                domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                domNoData  : '<div class="dropload-noData">暂无数据</div>'
+            },
+        loadDownFn : function(me){
+            $.ajax({
+                type: 'GET',
+                url: '../resourses/json/bank.json',
+                dataType: 'json',
+                success: function(data){
+                    var data=data;
+                    var result = '';
+                    for(var i = 0; i < data.lists.length; i++){
+                        result += '<div class="lists opacity" data-id="'+data.lists[i].id+'">'+
+                                '<h3 class="bank-name">'+data.lists[i].bankName+'</h3>'+
+                                '<div class="bank-imgs" >'+
+                                    '<img src="'+data.lists[i].bankImgs+'" alt="'+data.lists[i].bankName+'">'+
+                                    '<p class="bankAddress">'+data.lists[i].bankAddress+'</p>'+
+                                '</div>'+
+                             '</div>';
+                    }
+                    // 为了测试，延迟1秒加载
+                    setTimeout(function(){
+                        $('.innerHtm').append(result);
+                        // 每次数据加载完，必须重置
+                        dropload.resetload();
+                    },1000);
+                },
+                error: function(xhr, type){
+                    alert('Ajax error!');
+                    // 即使加载出错，也得重置
+                    dropload.resetload();
+                }
+            });
+            }
+        });
+        
+	 	//点击进入页面详情
+	 	$(document).on("click",".lists",function(){
+	 		var bankName = $(this).find(".bank-name").text();
+	 		var id = $(this).attr("data-id");
+	 		window.location.href="bank-details.html?bankName="+bankName+"&id="+id;
+	 	})
+	 	      
+	</script>
+</body>
+</html>

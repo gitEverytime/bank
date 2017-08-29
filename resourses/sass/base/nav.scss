@@ -1,0 +1,19 @@
+.bankNav{
+	background:#fff;
+	position:fixed;
+	left:0;
+	bottom:0;
+	width:100%;
+	li{
+		float:left;
+		text-align:center;
+		width:25%;
+		a{
+			display:block;
+			h3{
+			    margin-top:0.12rem;
+				font-size:$font-size2;
+			}
+		}
+	}
+}

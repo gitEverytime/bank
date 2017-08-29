@@ -1,0 +1,226 @@
+@charset "UTF-8";
+/*reset*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, arti
+cle, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  margin: 0;
+  padding: 0; }
+
+input, select, textarea {
+  font-size: 100%; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%; }
+
+th {
+  text-align: inherit;
+  font-weight: 400; }
+
+fieldset, img {
+  border: 0; }
+
+ol, ul {
+  list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+  font-weight: 400;
+  font-size: 100%;
+  text-rendering: optimizelegibility; }
+
+img {
+  border: 0;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic; }
+
+i {
+  font-style: normal; }
+
+em {
+  font-style: normal; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  cursor: pointer; }
+
+strong, b {
+  font-weight: normal; }
+
+button, input, select, textarea {
+  margin: 0;
+  outline: 0 none;
+  vertical-align: middle;
+  font-size: 100%;
+  vertical-align: top;
+  font-family: "Microsoft Yahei";
+  border: none; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top;
+  resize: none; }
+
+button, input {
+  line-height: normal; }
+
+input[type="text" i]:disabled {
+  background-color: #ebebe4; }
+
+.clearfix:before, .clearfix:after {
+  content: ".";
+  display: block;
+  visibility: hidden;
+  height: 0;
+  line-height: 0;
+  font-size: 0; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  zoom: 1; }
+
+body {
+  font-family: "Microsoft Yahei"; }
+
+.bankNav {
+  background: #fff;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; }
+  .bankNav li {
+    float: left;
+    text-align: center;
+    width: 25%; }
+    .bankNav li a {
+      display: block; }
+      .bankNav li a h3 {
+        margin-top: 0.12rem;
+        font-size: 0.22rem; }
+
+.dropload-up, .dropload-down {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  font-size: 12px;
+  /* 开启硬件加速 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0); }
+
+.dropload-down {
+  height: 50px; }
+
+.dropload-refresh, .dropload-update, .dropload-load, .dropload-noData {
+  height: 50px;
+  line-height: 50px;
+  text-align: center; }
+
+.dropload-load .loading {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  margin: 6px;
+  border: 2px solid #666;
+  border-bottom-color: transparent;
+  vertical-align: middle;
+  -webkit-animation: rotate 0.75s linear infinite;
+  animation: rotate 0.75s linear infinite; }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  50% {
+    -webkit-transform: rotate(180deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+  50% {
+    transform: rotate(180deg); }
+  100% {
+    transform: rotate(360deg); } }
+.banksWrap {
+  padding: 0.05rem 0.25rem;
+  overflow: hidden; }
+  .banksWrap h3 {
+    font-size: 0.26rem;
+    color: #737478; }
+  .banksWrap .bank-imgs {
+    display: block;
+    padding-top: 0.17rem;
+    padding-bottom: 0.37rem;
+    overflow: hidden;
+    border-bottom: #ededed solid 1px;
+    position: relative; }
+    .banksWrap .bank-imgs img {
+      width: 100%;
+      height: 100%; }
+    .banksWrap .bank-imgs .bankAddress {
+      font-size: 0.22rem;
+      color: #fff;
+      position: absolute;
+      left: 0.2rem;
+      bottom: 0.57rem; }
+
+.outer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  -webkit-flex-direction: column;
+  flex-direction: column; }
+
+.inner {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: #fff;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; }
+
+.inner .item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  padding: 3.125%;
+  border-bottom: 1px solid #ddd;
+  color: #333;
+  text-decoration: none; }
+
+.opacity {
+  -webkit-animation: opacity 0.3s linear;
+  animation: opacity 0.3s linear; }
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+@keyframes opacity {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+/*# sourceMappingURL=bank-lists.css.map */

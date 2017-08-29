@@ -1,0 +1,29 @@
+{
+	 		"lists":[
+             	{
+             		"bankName":"华夏银行江城支行",
+                    "bankImgs":"../resourses/images/bank_img1.png",
+                    "bankAddress":"文三路555号",
+                    "id":1
+             	},
+             	{
+             		"bankName":"杭州银行西兴支行",
+                    "bankImgs":"../resourses/images/bank_img2.png",
+                    "bankAddress":"迎春小区",
+                    "id":2
+             	},
+             	{
+             		"bankName":"建设银行滨江支行",
+                    "bankImgs":"../resourses/images/bank_img3.png",
+                    "bankAddress":"文三路555号",
+                    "id":3
+
+             	},
+             	{
+             		"bankName":"华夏银行江城支行",
+                    "bankImgs":"../resourses/images/bank_img1.png",
+                    "bankAddress":"文三路555号",
+                    "id":4
+             	},
+	 		]
+	 	};

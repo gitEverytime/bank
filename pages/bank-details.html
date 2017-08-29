@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>社区支行详情页</title>
+	<meta name="viewport" content="width=device-width"/> 
+	<link rel="stylesheet" type="text/css" href="../resourses/css/bank/bank-details.css">
+</head>
+<body>
+    <div class='o-sliderContainer' id="pbSliderWrap0" style="margin-top:0;">
+        <div class='o-slider' id='pbSlider0'>
+            
+           
+        </div>
+    </div>
+    <div class="details-title">
+    	<span>特色服务</span><label>优惠不停，惊喜不断</label>
+    </div>
+    <div class="details-wares">
+    	<div class="wares-left"></div>
+    	<div class="wares-right">
+	    	<div class="wares-middle"></div>
+	    	<div class="wares-bottom"></div>
+    	</div>
+    </div>
+    <div class="details-title">
+    	<span>特约商户</span><label>让你的生活更精彩</label>
+    </div>
+    <script type="text/javascript" src="../resourses/js/vendor/jquery-2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../resourses/js/common/commonNav.js"></script>
+	<script type="text/javascript" src="../resourses/js/vendor/base/base.js"></script>
+    <script type="text/javascript" src="../resourses/js/vendor/hammer.min.js"></script>
+    <script type="text/javascript" src="../resourses/js/vendor/slider.js"></script>
+	<script type="text/javascript">
+    	var dataServer = {
+    		data:[
+                {
+                	title:"七夕有礼",
+                	detail:"花积分兑换浪漫",
+                	url:"../resourses/images/detail-img1.png",
+                	recommend:1   //1,左半部分推荐 2，旅行推荐 3，其他类
+                },
+                {
+                	title:"境外自由行",
+                	detail:"精选路线 999元起",
+                	url:"../resourses/images/detail-img3.png",
+                	recommend:2   
+                },
+                {
+                	title:"积分兑换",
+                	detail:"生日当日优惠兑换",
+                	url:"../resourses/images/detail-img2.png",
+                	recommend:3
+                },
+                {
+                	title:"推荐办卡",
+                	detail:"好礼送不停",
+                	url:"../resourses/images/detail-img4.png",
+                	recommend:3 
+                }
+    		]
+    	}
+    	//Banner循环渲染Dom结构
+    	var func_banner = function(data){
+	    	var bannerHtml = '<div class="o-slider--item" data-image="'+data.detailImg+'">'+
+                                 '<h3>'+data.datailAddress+'</h3>'+
+                             '</div>';                
+	    	return bannerHtml;				 
+    	}
+         $.ajax({
+                type: 'GET',
+                url: '../resourses/json/bank.json',
+                dataType: 'json',
+                success: function(data){
+                	if(dataBanner.data){
+                		for (var i = 0; i < dataBanner.data.length; i++) {
+                			var data = {
+                				detailImg:dataBanner.data[i].detailImg,
+                				datailAddress:dataBanner.data[i].datailAddress
+                			}
+                			$(".o-slider").append(func_banner(data));	
+                		}
+                	}
+                },
+                error: function(xhr, type){
+                }
+            });
+    	//特色服务
+        //左边Dom渲染
+    	var func_serverLeft = function(data){
+    		var leftHtml = '<h3>'+
+                              	'<span class="title">'+data.title+'</span>'+
+                              	'<span class="detail">'+data.detail+'</span>'+
+    	                    '</h3>'+
+    	                    '<img src="'+data.url+'">'; 
+    	    return leftHtml;                
+    	}
+    	//右上Dom渲染
+    	var func_serverMiddle = function(data){
+    		var middleHtml = '<h3>'+
+    	                        '<span class="title">'+data.title+'</span>'+
+                              	'<span class="detail">'+data.detail+'</span>'+
+    	                    '</h3>'+
+                            '<img src="'+data.url+'">'; 
+            return middleHtml;                
+        }
+        //右下Dom渲染
+        var func_serverRight = function(){
+        	var rightHtml = '<div class="serverList">'+
+        	                	'<h3>'+
+        	                		'<span class="title">'+data.title+'</span>'+
+                              	    '<span class="detail">'+data.detail+'</span>'+
+        	                	'</h3>'+
+        	                	'<img src="'+data.url+'">'+
+        	                '</div>';
+        	return rightHtml;                
+        }  
+
+        //跨域请求接口数据
+        var data_server = dataServer.data;  
+        if(data_server){
+        	for (var i = 0; i < data_server.length; i++) {
+        		var recommend = data_server[i].recommend;
+        		var data = {
+        			title:data_server[i].title,
+                    detail:data_server[i].detail,
+                    url:data_server[i].url
+        		}
+        		switch(recommend){
+                    case 1:
+                    $(".wares-left").append(func_serverLeft(data));
+                    break;
+                    case 2:
+                    $(".wares-middle").append(func_serverMiddle(data));
+                    break;
+                    case 3:
+                     $(".wares-bottom").append(func_serverRight(data));
+                    break;
+        		}
+        	}
+        }  
+
+         $('#pbSlider0').pbTouchSlider({
+          slider_Wrap: '#pbSliderWrap0',
+          slider_Threshold: 10,
+          slider_Speed:600,
+          slider_Ease:'ease-out',
+          slider_Drag : true,
+          slider_Arrows: {
+            enabled : true
+          },
+          slider_Dots: {
+            class :'.o-slider-pagination',
+            enabled : true,
+            preview : false
+          },
+          slider_Breakpoints: {
+              default: {
+                  height: 500
+              },
+              tablet: {
+                  height: 350,
+                  media: 1024
+              },
+              smartphone: {
+                  height: 150,
+                  media: 768
+              }
+          }
+    });             
+	</script>
+</body>
+</html>
